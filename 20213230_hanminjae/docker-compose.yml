@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  mysql-db:
+    image: mysql:5.7
+    container_name: mysql-db
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: web
+      MYSQL_USER: test1
+      MYSQL_PASSWORD: test1
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./page/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  internal-service:
+    build:
+      context: .
+      dockerfile: internal.Dockerfile
+    container_name: internal-service
+    ports:
+      - "8080:80"
+    depends_on:
+      - mysql-db
+
+  public-service:
+    build:
+      context: .
+      dockerfile: public.Dockerfile
+    container_name: public-service
+    ports:
+      - "80:80"
