@@ -1,2 +1,6 @@
-# Web_submit
-web programming hw submission
+# 웹 프로그래밍 과제 제출입니다.
+## 현재 http://35.232.13.218/ 에서 실시간으로 운영 중입니다
+이 페이지는 간단한 자기소개와 함께 다른 포트로 워게임을 만들어뒀습니다.
+lfi를 이용해 소스 코드를 확인하고, error-based blind sql injection을 통해 사용자 비밀번호 해시를 탈취합니다.
+탈취한 해시는 rainbow table에 의해 일반 해시 크래킹 사이트에서도 크래킹이 가능합니다.
+그렇게 admin/minjae1234를 입력하면 축하 메시지를 확인할 수 있습니다!
